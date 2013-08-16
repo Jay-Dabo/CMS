@@ -8,8 +8,6 @@
  * @author     Ryan Dawkins
  */
 
-namespace SmartChurch;
-
 /**
  * Model_Crud
  *

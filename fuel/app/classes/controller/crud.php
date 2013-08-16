@@ -8,8 +8,6 @@
  * @author     Ryan Dawkins
  */
 
-namespace SmartChurch;
-
 use Fuel\Core\Controller_Rest;
 
 /**
