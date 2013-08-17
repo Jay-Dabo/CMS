@@ -21,7 +21,7 @@ class Model_Person extends Model_Crud {
     const TABLE = 'person';
     const COLUMN_PRIMARY_KEY = 'personid';
     const COLUMN_FIRST_NAME = 'firstName';
-    const COLUMN_MIDDLE_INITIAL = 'middleInitial';
+    const COLUMN_MIDDLE_NAME = 'middleName';
     const COLUMN_LAST_NAME = 'lastName';
     const COLUMN_HOME_ID = 'homeid';
     
@@ -29,15 +29,15 @@ class Model_Person extends Model_Crud {
      * Method to insert a person
      * 
      * @param   string $firstName
-     * @param   string $middleInitial
+     * @param   string $middleName
      * @param   string $lastName
      * @param   int $homeid
      * @return  array
      */
-    public function create($firstName, $middleInitial, $lastName, $homeid){
+    public function create($firstName, $middleName, $lastName, $homeid){
         return DB::insert(self::TABLE)->set(array(
             self::COLUMN_FIRST_NAME => $firstName,
-            self::COLUMN_MIDDLE_INITIAL => $middleInitial,
+            self::COLUMN_MIDDLE_NAME => $middleName,
             self::COLUMN_LAST_NAME => $lastName,
             self::COLUMN_HOME_ID => $homeid
         ))->execute();
@@ -67,15 +67,15 @@ class Model_Person extends Model_Crud {
      * 
      * @param   int $personid
      * @param   string $firstName
-     * @param   string $middleInitial
+     * @param   string $middleName
      * @param   string $lastName
      * @param   int $homeid
      * @return  array
      */
-    public function update($personid, $firstName, $middleInitial, $lastName, $homeid) {
+    public function update($personid, $firstName, $middleName, $lastName, $homeid) {
         return DB::update(self::TABLE)->set(array(
             self::COLUMN_FIRST_NAME => $firstName,
-            self::COLUMN_MIDDLE_INITIAL => $middleInitial,
+            self::COLUMN_MIDDLE_NAME => $middleName,
             self::COLUMN_LAST_NAME => $lastName,
             self::COLUMN_HOME_ID => $homeid
         ))->where(self::COLUMN_PRIMARY_KEY, $personid)->execute();

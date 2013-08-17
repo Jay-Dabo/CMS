@@ -32,7 +32,7 @@ class Controller_Person extends Controller_Crud{
      * Create method to talk to the model that inserts the person
      * 
      * @param   string $firstName
-     * @param   string $middleInitial
+     * @param   string $middleName
      * @param   string $lastName
      * @param   string $homeid
      * @method  POST
@@ -40,10 +40,10 @@ class Controller_Person extends Controller_Crud{
      */
     public function post_create(){
         $firstName = Input::post('firstName');
-        $middleInitial = Input::post('middleInitial');
+        $middleName = Input::post('middleName');
         $lastName = Input::post('lastName');
         $homeid = Input::post('homeid');
-        $this->data['response']['body'] = $this->model->create($firstName, $middleInitial, $lastName, $homeid);
+        $this->data['response']['body'] = $this->model->create($firstName, $middleName, $lastName, $homeid);
     }
     
     /**
@@ -63,7 +63,7 @@ class Controller_Person extends Controller_Crud{
      * 
      * @param   int $personid
      * @param   string $firstName
-     * @param   string $middleInitial
+     * @param   string $middleName
      * @param   string $lastName
      * @param   string $homeid
      * @method  POST
@@ -72,10 +72,10 @@ class Controller_Person extends Controller_Crud{
     public function post_update() {
         $personid = Input::post('personid');
         $firstName = Input::post('firstName');
-        $middleInitial = Input::post('middleInitial');
+        $middleName = Input::post('middleName');
         $lastName = Input::post('lastName');
         $homeid = Input::post('homeid');
-        $this->data['response']['body'] = $this->model->update($personid, $firstName, $middleInitial, $lastName, $homeid);
+        $this->data['response']['body'] = $this->model->update($personid, $firstName, $middleName, $lastName, $homeid);
     }
     
     /**
