@@ -35,6 +35,9 @@ class Controller_Person extends Controller_Crud{
      * @param   string $middleName
      * @param   string $lastName
      * @param   string $homeid
+     * @param   int $gender
+     * @param   int $martialStatus
+     * @param   date $birth
      * @method  POST
      * @return  void
      */
@@ -43,7 +46,10 @@ class Controller_Person extends Controller_Crud{
         $middleName = Input::post('middleName');
         $lastName = Input::post('lastName');
         $homeid = Input::post('homeid');
-        $this->data['response']['body'] = $this->model->create($firstName, $middleName, $lastName, $homeid);
+        $gender = Input::post('gender');
+        $maritalStatus = Input::post('maritalStatus');
+        $birth = Input::post('birth');
+        $this->data['response']['body'] = $this->model->create($firstName, $middleName, $lastName, $homeid, $gender, $maritalStatus, $birth);
     }
     
     /**
@@ -66,6 +72,9 @@ class Controller_Person extends Controller_Crud{
      * @param   string $middleName
      * @param   string $lastName
      * @param   string $homeid
+     * @param   int $gender
+     * @param   int $martialStatus
+     * @param   date $birth
      * @method  POST
      * @return  void
      */
@@ -75,7 +84,10 @@ class Controller_Person extends Controller_Crud{
         $middleName = Input::post('middleName');
         $lastName = Input::post('lastName');
         $homeid = Input::post('homeid');
-        $this->data['response']['body'] = $this->model->update($personid, $firstName, $middleName, $lastName, $homeid);
+        $gender = Input::post('gender');
+        $maritalStatus = Input::post('maritalStatus');
+        $birth = Input::post('birth');
+        $this->data['response']['body'] = $this->model->update($personid, $firstName, $middleName, $lastName, $homeid, $gender, $maritalStatus, $birth);
     }
     
     /**

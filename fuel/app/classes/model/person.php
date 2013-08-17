@@ -24,6 +24,9 @@ class Model_Person extends Model_Crud {
     const COLUMN_MIDDLE_NAME = 'middleName';
     const COLUMN_LAST_NAME = 'lastName';
     const COLUMN_HOME_ID = 'homeid';
+    const COLUMN_GENDER = 'gender';
+    const COLUMN_MARITAL_STATUS = 'maritalStatus';
+    const COLUMN_BIRTH = 'birth';
     
     /**
      * Method to insert a person
@@ -32,14 +35,20 @@ class Model_Person extends Model_Crud {
      * @param   string $middleName
      * @param   string $lastName
      * @param   int $homeid
+     * @param   int $gender
+     * @param   int $martialStatus
+     * @param   date $birth
      * @return  array
      */
-    public function create($firstName, $middleName, $lastName, $homeid){
+    public function create($firstName, $middleName, $lastName, $homeid, $gender, $maritalStatus, $birth){
         return DB::insert(self::TABLE)->set(array(
             self::COLUMN_FIRST_NAME => $firstName,
             self::COLUMN_MIDDLE_NAME => $middleName,
             self::COLUMN_LAST_NAME => $lastName,
-            self::COLUMN_HOME_ID => $homeid
+            self::COLUMN_HOME_ID => $homeid,
+            self::COLUMN_GENDER => $gender,
+            self::COLUMN_MARITAL_STATUS => $maritalStatus,
+            self::COLUMN_BIRTH => $birth
         ))->execute();
     }
     
@@ -70,6 +79,9 @@ class Model_Person extends Model_Crud {
      * @param   string $middleName
      * @param   string $lastName
      * @param   int $homeid
+     * @param   int $gender
+     * @param   int $martialStatus
+     * @param   date $birth
      * @return  array
      */
     public function update($personid, $firstName, $middleName, $lastName, $homeid) {
@@ -77,7 +89,10 @@ class Model_Person extends Model_Crud {
             self::COLUMN_FIRST_NAME => $firstName,
             self::COLUMN_MIDDLE_NAME => $middleName,
             self::COLUMN_LAST_NAME => $lastName,
-            self::COLUMN_HOME_ID => $homeid
+            self::COLUMN_HOME_ID => $homeid,
+            self::COLUMN_GENDER => $gender,
+            self::COLUMN_MARITAL_STATUS => $maritalStatus,
+            self::COLUMN_BIRTH => $birth
         ))->where(self::COLUMN_PRIMARY_KEY, $personid)->execute();
     }
     
