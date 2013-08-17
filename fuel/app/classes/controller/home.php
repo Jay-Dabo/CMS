@@ -18,11 +18,12 @@ use Fuel\Core\Controller_Rest;
  * @package   SmartChurch
  * @author    Ryan Dawkins
  */
-class Controller_Person extends Controller_Rest{
+class Controller_Home extends Controller_Rest{
     
     const MESSAGE_BAD_ADDRESS = 'You did not provide a proper address id and/or a homeid';
     const MESSAGE_BAD_HOMEID = 'You didn\'t provide a proper homeid.';
-    const MESSAGE_BAD_ADD_PERSON = 'You didn\'t provide a proper homeid and/or peopleid';
+    const MESSAGE_BAD_ADD_PERSON = 'You didn\'t provide a proper homeid and/or personid';
+    const MESSAGE_BAD_PEOPLEID = 'You didn\'t provide a proper personid';
     
     private $data;
     private $model;
@@ -60,39 +61,44 @@ class Controller_Person extends Controller_Rest{
     public function get_get() {
         $homeid = Input::get('homeid');
         if($homeid != null) {
-            $this->data['response']['body'] = $this->model->get($homeid);
+            $this->data['response']['body'] = $this->model->getMembers($homeid);
         } else {
             $this->data['respose']['body'] = self::MESSAGE_BAD_HOMEID;
         }
     }
     
     /**
-     * Function to create a new home by a given peopleid
+     * Function to create a new home by a given personid
      * 
      * @method  POST
-     * @param   int $peopleid primary key for people table
+     * @param   int $personid primary key for person table
      * @return  array $this->data of primary key
      */
     public function post_create() {
-        $peopleid = Input::post('peopleid');
-        if($peopleid != null) {
-            $this->data['response']['body'] = $this->model->create($peopleid);
+        $personid = Input::post('personid');
+        if($personid != null) {
+            $this->data['response']['body'] = $this->model->create($personid);
         } else {
-            $this->data['response']['body'] = self::MESSAGE_BAD_HOMEID;
+            $this->data['response']['body'] = self::MESSAGE_BAD_PEOPLEID;
         }
     }
     
     /**
-     * Function to add a person to a home by a given peopleid
+     * Function to add a person to a home by a given personid
      * 
      * @method  POST
      * @param   int $homeid primary key for home table
-     * @param   int $peopleid primary key for people table
+     * @param   int $personid primary key for person table
      * @return  array $this->data of new updated row
      */
     public function post_person() {
         $homeid = Input::post('homeid');
-        $peopleid = Input::post('peopleid');
+        $personid = Input::post('personid');
+        if($homeid != null && $personid != null) {
+            $this->data['response']['body'] = $this->model->addPerson($homeid, $personid);
+        } else {
+            $this->data['response']['body'] = self::MESSAGE_BAD_ADD_PERSON;
+        }
     }
     
     /**

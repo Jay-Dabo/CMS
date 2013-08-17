@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.29)
 # Database: cms
-# Generation Time: 2013-08-17 06:16:49 +0000
+# Generation Time: 2013-08-17 14:12:38 +0000
 # ************************************************************
 
 
@@ -46,19 +46,19 @@ CREATE TABLE `home` (
 
 
 
-# Dump of table people
+# Dump of table person
 # ------------------------------------------------------------
 
-CREATE TABLE `people` (
-  `peopleid` int(16) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `person` (
+  `personid` int(16) unsigned NOT NULL AUTO_INCREMENT,
   `firstName` varchar(64) DEFAULT NULL,
   `middleName` varchar(64) DEFAULT NULL,
   `lastName` varchar(64) DEFAULT NULL,
   `homeid` int(16) DEFAULT NULL,
   `gender` int(2) DEFAULT NULL,
-  `marritalStatus` int(11) DEFAULT NULL,
+  `maritalStatus` int(11) DEFAULT NULL,
   `birth` date DEFAULT NULL,
-  PRIMARY KEY (`peopleid`)
+  PRIMARY KEY (`personid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
